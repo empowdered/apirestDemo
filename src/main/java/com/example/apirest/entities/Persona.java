@@ -36,7 +36,7 @@ public class Persona implements Serializable {
     @Column(name="rut_persona")
     private String rutPersona;
 
-    @Column(name="fecha_creacion", nullable = true)
-    private Date fechaCreacion;
+    //@Column(name="fecha_creacion", nullable = true)
+    //private Date fechaCreacion;
 
 }
