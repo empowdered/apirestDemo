@@ -33,6 +33,7 @@ public class PersonaService implements BaseService<Persona>{
     public Persona findById(Long id) throws Exception {
         try{
             Optional<Persona> entityOptional = this.personaRepository.findById(id);
+            System.out.println("Encontrado: " + entityOptional.get().getNombrePersona());
             return entityOptional.get();
         }catch(Exception ex){
             throw new Exception(ex.getMessage());
@@ -52,11 +53,32 @@ public class PersonaService implements BaseService<Persona>{
 
     @Override
     @Transactional
-    public Persona update(Long id, Persona entity) throws Exception {
+    public Persona update(Persona entity) throws Exception {
+        long id = entity.getIdPersona();
+        System.out.println("id: " + id);
+        Persona persona;
+        Optional<Persona> entityOptional = null;
         try{
-            Optional<Persona> entityOptional = this.personaRepository.findById(id);
-            Persona persona = entityOptional.get();
-            persona = this.personaRepository.save(persona);
+            entityOptional = this.personaRepository.findById(id);
+
+            if(entityOptional.isPresent()){
+
+                persona = entityOptional.get();
+
+                System.out.println("Encontrado para actualizar: " + entityOptional.get().getNombrePersona());
+                System.out.println("El id para actualizar: " + persona.getIdPersona());
+
+                persona.setIdPersona(id);
+                persona.setNombrePersona(entity.getNombrePersona());
+                persona.setApellidoPersona(entity.getApellidoPersona());
+                persona.setRutPersona(entity.getRutPersona());
+
+                persona = this.personaRepository.save(persona);
+
+            }else{
+                System.out.println("No encontrado para actualizar...");
+                throw new Exception();
+            }
             return persona;
         }catch(Exception ex){
             throw new Exception(ex.getMessage());

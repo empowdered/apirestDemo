@@ -13,13 +13,9 @@ import java.util.Date;
 
 @Entity
 @Table(name="persona")
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 public class Persona implements Serializable {
 
-    @Serial
+    //@Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -27,16 +23,48 @@ public class Persona implements Serializable {
     @Column(name="id_persona")
     private long idPersona;
 
-    @Column(name="nombre_persona")
+    @Column(name="nombre_persona",columnDefinition = "VARCHAR(50)")
     private String nombrePersona;
 
-    @Column(name="apellido_persona")
+    @Column(name="apellido_persona",columnDefinition = "VARCHAR(50)")
     private String apellidoPersona;
 
-    @Column(name="rut_persona")
+    @Column(name="rut_persona",columnDefinition = "VARCHAR(50)")
     private String rutPersona;
 
-    //@Column(name="fecha_creacion", nullable = true)
-    //private Date fechaCreacion;
+    public Persona(){
 
+    }
+
+    public long getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(long idPersona) {
+        this.idPersona = idPersona;
+    }
+
+    public String getNombrePersona() {
+        return nombrePersona;
+    }
+
+    public void setNombrePersona(String nombrePersona) {
+        this.nombrePersona = nombrePersona;
+    }
+
+    public String getApellidoPersona() {
+        return apellidoPersona;
+    }
+
+    public void setApellidoPersona(String apellidoPersona) {
+        this.apellidoPersona = apellidoPersona;
+    }
+
+    public String getRutPersona() {
+        return rutPersona;
+    }
+
+    public void setRutPersona(String rutPersona) {
+        this.rutPersona = rutPersona;
+    }
 }
