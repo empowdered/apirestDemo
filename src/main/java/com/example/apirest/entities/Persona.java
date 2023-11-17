@@ -13,16 +13,21 @@ import java.util.Date;
 
 @Entity
 @Table(name="persona")
-public class Persona implements Serializable {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Persona extends Base{
 
     //@Serial
     private static final long serialVersionUID = 1L;
 
+   /*
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_persona")
     private long idPersona;
-
+    */
     @Column(name="nombre_persona",columnDefinition = "VARCHAR(50)")
     private String nombrePersona;
 
@@ -32,17 +37,17 @@ public class Persona implements Serializable {
     @Column(name="rut_persona",columnDefinition = "VARCHAR(50)")
     private String rutPersona;
 
-    public Persona(){
+    //public Persona(){
 
-    }
+    //}
 
-    public long getIdPersona() {
-        return idPersona;
-    }
+    //public long getIdPersona() {
+     //   return idPersona;
+    //}
 
-    public void setIdPersona(long idPersona) {
-        this.idPersona = idPersona;
-    }
+    //public void setIdPersona(long idPersona) {
+      //  this.idPersona = idPersona;
+    //}
 
     public String getNombrePersona() {
         return nombrePersona;
