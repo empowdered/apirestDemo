@@ -10,7 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-public abstract class BaseControllerImpl <E extends Base, S extends BaseServiceImpl<E, Long>> implements BaseController<E, Long> {
+public abstract class BaseControllerImpl
+        <E extends Base, S extends BaseServiceImpl<E, Long>> implements BaseController<E, Long> {
 
     @Autowired
     protected S servicio;
@@ -46,11 +47,11 @@ public abstract class BaseControllerImpl <E extends Base, S extends BaseServiceI
         }
     }
 
-    @PostMapping(value="/update",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> update(@RequestBody  E entity){
+    @PutMapping(value="/update",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody  E entity){
 
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(this.servicio.update(entity));
+            return ResponseEntity.status(HttpStatus.OK).body(this.servicio.update(id,entity));
         }catch(Exception ex){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.errorMssge);
         }

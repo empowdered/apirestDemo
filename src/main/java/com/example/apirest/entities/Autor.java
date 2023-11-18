@@ -14,13 +14,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Autor extends Base{
+public class Autor extends Base {
 
-    @Column(name="nombre_autor",columnDefinition = "VARCHAR(50)")
+    @Column(name = "nombre_autor", columnDefinition = "VARCHAR(50)")
     private String nombreAutor;
-    @Column(name="apellido_autor",columnDefinition = "VARCHAR(50)")
+    @Column(name = "apellido_autor", columnDefinition = "VARCHAR(50)")
     private String apellidoAutor;
-    @Column(name="biografia",columnDefinition = "VARCHAR(50)")
+    @Column(name = "biografia", columnDefinition = "VARCHAR(50)")
     private String biografia;
 
 }
+
