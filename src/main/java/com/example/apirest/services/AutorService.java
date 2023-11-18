@@ -1,19 +1,20 @@
 package com.example.apirest.services;
 
+import com.example.apirest.entities.Autor;
 import com.example.apirest.entities.Persona;
+import com.example.apirest.repositories.AutorRepository;
 import com.example.apirest.repositories.BaseRepository;
 import com.example.apirest.repositories.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonaService extends BaseServiceImpl<Persona, Long> {
-
+public class AutorService extends BaseServiceImpl<Autor, Long> {
     @Autowired
-    private PersonaRepository personaRepository;
+    private AutorRepository autorRepository;
 
-    public PersonaService(BaseRepository<Persona, Long> baseRepository){
-        super(baseRepository);
+    public AutorService(BaseRepository<Autor, Long> autorRepository){
+        super(autorRepository);
     }
 
 }
