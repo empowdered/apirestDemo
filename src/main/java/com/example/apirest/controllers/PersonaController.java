@@ -2,13 +2,11 @@ package com.example.apirest.controllers;
 
 
 import com.example.apirest.entities.Persona;
-import com.example.apirest.services.PersonaService;
-import org.apache.coyote.Response;
+import com.example.apirest.services.impl.PersonaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class PersonaController {
 
     @Autowired
-    private PersonaService personaService;
+    private PersonaServiceImpl personaServiceImpl;
 
     private Persona persona = new Persona();
 
@@ -26,7 +24,7 @@ public class PersonaController {
     @GetMapping(value="/getall", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getAll(){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(this.personaService.findAll());
+            return ResponseEntity.status(HttpStatus.OK).body(this.personaServiceImpl.findAll());
         }catch(Exception ex){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.errorMssge);
         }
@@ -35,7 +33,7 @@ public class PersonaController {
     @GetMapping(value="/getone/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getOne(@PathVariable Long id){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(this.personaService.findById(id));
+            return ResponseEntity.status(HttpStatus.OK).body(this.personaServiceImpl.findById(id));
         }catch(Exception ex){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.errorMssge);
         }
@@ -44,13 +42,13 @@ public class PersonaController {
     @PostMapping(value="/save",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> save(@RequestBody Persona persona){
 
-        this.persona.setIdPersona(persona.getIdPersona());
+        this.persona.setId(persona.getId());
         this.persona.setNombrePersona(persona.getNombrePersona());
         this.persona.setApellidoPersona(persona.getApellidoPersona());
         this.persona.setRutPersona(persona.getRutPersona());
 
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(this.personaService.save(this.persona));
+            return ResponseEntity.status(HttpStatus.OK).body(this.personaServiceImpl.save(this.persona));
         }catch(Exception ex){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.errorMssge);
         }
@@ -67,7 +65,7 @@ public class PersonaController {
         */
 
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(this.personaService.update(entity));
+            return ResponseEntity.status(HttpStatus.OK).body(this.personaServiceImpl.update(entity));
         }catch(Exception ex){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.errorMssge);
         }
@@ -76,7 +74,7 @@ public class PersonaController {
     @DeleteMapping(value="/delete/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> delete(@PathVariable Long id){
         try{
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(this.personaService.delete(id));
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(this.personaServiceImpl.delete(id));
         }catch(Exception ex){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.errorMssge);
         }

@@ -1,8 +1,9 @@
-package com.example.apirest.services;
+package com.example.apirest.services.impl;
 
 import com.example.apirest.entities.Base;
 import com.example.apirest.entities.Persona;
 import com.example.apirest.repositories.BaseRepository;
+import com.example.apirest.services.BaseService;
 import jakarta.transaction.Transactional;
 
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public abstract class BaseServiceImpl <E extends Base, ID extends Serializable>
-                implements BaseService<E, ID>{
+                implements BaseService<E, ID> {
 
     protected BaseRepository<E, ID> baseRepository;
 
