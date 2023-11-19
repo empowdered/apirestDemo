@@ -13,6 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Domicilio extends Base{
+
     @Column(name = "nombre_calle")
     private String nombreCalle;
     @Column(name = "numero_calle")
@@ -21,4 +22,5 @@ public class Domicilio extends Base{
     @ManyToOne(optional = false)
     @JoinColumn(name="fk_localidad")
     private Localidad localidad;
+
 }
