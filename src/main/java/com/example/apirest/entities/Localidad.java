@@ -17,7 +17,4 @@ public class Localidad extends Base{
     @Column(name = "denominacion")
     private String denominacion;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="fk_localidad")
-    private Localidad localidad;
 }

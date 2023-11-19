@@ -17,16 +17,14 @@ import java.util.List;
 @AllArgsConstructor
 public class Autor extends Base {
 
-    @Column(name = "nombre_autor", columnDefinition = "VARCHAR(50)", length = 50)
+    @Column(name = "nombre_autor", length = 50)
     private String nombreAutor;
 
-    @Column(name = "apellido_autor", columnDefinition = "VARCHAR(50)",length = 50)
+    @Column(name = "apellido_autor", length = 50)
     private String apellidoAutor;
 
-    @Column(name = "biografia", columnDefinition = "VARCHAR(1500)", length = 1500)
+    @Column(name = "biografia", length = 1500)
     private String biografia;
 
-    @ManyToMany(cascade = CascadeType.REFRESH)
-    private List<Libro> libros;
 }
 
