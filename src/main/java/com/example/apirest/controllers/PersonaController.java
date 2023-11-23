@@ -15,4 +15,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path="api/v1/personas")
 public  class PersonaController extends BaseControllerImpl<Persona,PersonaServiceImpl> {
 
+
+    @GetMapping("/search")
+    public ResponseEntity<?>searchPeople(@PathVariable String filtro){
+      try{
+          return ResponseEntity.status(HttpStatus.OK).body(this.servicio.searchPeople(filtro));
+        }catch(Exception ex1){
+          return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"No encontrado\" "+ex1.getMessage() + "}");
+      }
+    }
+
 }

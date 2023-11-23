@@ -21,12 +21,14 @@ import java.util.List;
 @AllArgsConstructor
 public class Persona extends Base{
 
-    @Column(name="nombre_persona",columnDefinition = "VARCHAR(50)")
+    @Column(name="nombre_persona",length=50)
     private String nombrePersona;
-    @Column(name="apellido_persona",columnDefinition = "VARCHAR(50)")
+
+    @Column(name="apellido_persona", length=50)
     private String apellidoPersona;
-    @Column(name="rut_persona",columnDefinition = "VARCHAR(50)")
-    private String rutPersona;
+
+    @Column(name="rut_persona",length=1500)
+    private String rut_persona;
 
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="fk_domicilio")
@@ -38,5 +40,4 @@ public class Persona extends Base{
             inverseJoinColumns = @JoinColumn(name="libro_id")
     )
     private List<Libro> libros = new ArrayList<Libro>();
-
 }

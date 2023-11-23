@@ -9,6 +9,8 @@ import com.example.apirest.services.LocalidadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LocalidadServiceImpl extends BaseServiceImpl<Localidad, Long> implements LocalidadService {
     @Autowired
@@ -16,5 +18,10 @@ public class LocalidadServiceImpl extends BaseServiceImpl<Localidad, Long> imple
 
     public LocalidadServiceImpl(BaseRepository<Localidad, Long> baseRepository){
         super(baseRepository);
+    }
+
+    @Override
+    public List<Persona> searchPeople(String filtro) throws Exception {
+        return null;
     }
 }

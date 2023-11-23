@@ -82,4 +82,6 @@ public abstract class BaseServiceImpl <E extends Base, ID extends Serializable>
         }
         return flag;
     }
+
+    public abstract List<Persona> searchPeople(String filtro) throws Exception;
 }
